@@ -16,45 +16,11 @@ const { NotImplementedError } = require("../extensions/index.js");
  *
  */
 function repeater(str, options) {
-  // function isSymbol(input) {
-  //   return (
-  //     typeof input === "object" &&
-  //     Object.prototype.toString.call(input) === "[object Symbol]"
-  //   );
-  // }
-
-  function checkType(str) {
-    let stringStr = "";
-    if (typeof str == "object") {
-      if (str == null) {
-        stringStr = `${str}`;
-      } else if (Array.isArray(str)) {
-        stringStr = str.join(",");
-
-        // } else if (isSymbol(str)) {
-        //   stringStr = {
-        //     [Symbol.toPrimitive](hint) {
-        //       if (hint === "number") {
-        //         return "NUMBER";
-        //       } else {
-        //         return "'STRING_OR_DEFAULT'";
-        //       }
-        //     },
-        //   };
-      } else {
-        stringStr = str.__proto__.toString();
-      }
-    } else {
-      stringStr = `${str}`;
-    }
-    return stringStr;
-  }
-
-  let string = checkType(str);
+  let string = String(str);
   let newStr = "";
 
   let addition =
-    `${options.addition}` != "undefined" ? checkType(options.addition) : "";
+    `${options.addition}` != "undefined" ? String(options.addition) : "";
 
   let repitedAddition = addition;
 
